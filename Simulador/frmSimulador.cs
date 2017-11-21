@@ -443,6 +443,11 @@ namespace Simulador
             pStart.StartInfo = new System.Diagnostics.ProcessStartInfo(@"ftp://ftp.inf.ufrgs.br/pub/inf107/WNeander.exe");
             pStart.Start();
         }
+
+        private void menuArquivoSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

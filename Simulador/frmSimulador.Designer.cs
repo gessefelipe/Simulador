@@ -90,39 +90,40 @@
             // menuArquivoNovo
             // 
             this.menuArquivoNovo.Name = "menuArquivoNovo";
-            this.menuArquivoNovo.Size = new System.Drawing.Size(119, 22);
+            this.menuArquivoNovo.Size = new System.Drawing.Size(152, 22);
             this.menuArquivoNovo.Text = "Novo";
             this.menuArquivoNovo.Click += new System.EventHandler(this.menuArquivoNovo_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // menuArquivoCarregar
             // 
             this.menuArquivoCarregar.Name = "menuArquivoCarregar";
-            this.menuArquivoCarregar.Size = new System.Drawing.Size(119, 22);
+            this.menuArquivoCarregar.Size = new System.Drawing.Size(152, 22);
             this.menuArquivoCarregar.Text = "Carregar";
             this.menuArquivoCarregar.Click += new System.EventHandler(this.menuArquivoCarregar_Click);
             // 
             // menuArquivoSalvar
             // 
             this.menuArquivoSalvar.Name = "menuArquivoSalvar";
-            this.menuArquivoSalvar.Size = new System.Drawing.Size(119, 22);
+            this.menuArquivoSalvar.Size = new System.Drawing.Size(152, 22);
             this.menuArquivoSalvar.Text = "Salvar";
             this.menuArquivoSalvar.Click += new System.EventHandler(this.menuArquivoSalvar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // menuArquivoSair
             // 
             this.menuArquivoSair.Name = "menuArquivoSair";
-            this.menuArquivoSair.Size = new System.Drawing.Size(119, 22);
+            this.menuArquivoSair.Size = new System.Drawing.Size(152, 22);
             this.menuArquivoSair.Text = "Sair";
+            this.menuArquivoSair.Click += new System.EventHandler(this.menuArquivoSair_Click);
             // 
             // menuExecutar
             // 
