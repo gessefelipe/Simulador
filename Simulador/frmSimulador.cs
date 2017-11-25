@@ -144,6 +144,7 @@ namespace Simulador
             menuArquivoNovo.Enabled = true;
             menuArquivoCarregar.Enabled = true;
             richTextBox1.Text = "";
+            richTextBox2.Text = "";
             textBox1.Text = "0";
             textBox2.Text = "0";
         }
@@ -162,6 +163,7 @@ namespace Simulador
             if (rtbReadFile.Text != "")
             {
                 richTextBox1.Text = "";
+                richTextBox2.Text = "";
                 textBox1.Text = "0";
                 textBox2.Text = "0";
 
@@ -169,6 +171,7 @@ namespace Simulador
                 int desvio = 0;
                 int posicao_desvio = 0;
                 int processamento = 0;
+                int multiplexador = 0;
                 int i = 0;
 
                 while (rtbReadFile.Text != null)
@@ -192,15 +195,21 @@ namespace Simulador
                         if (desvio == 0)
                         {
                             string result = tipo_mnemonico(current);
+                            richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> PC = " + processamento + ".\n";
+                            richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Acessou o endereço de memória na posição " + processamento + ".\n";
                             if (result == "NOP")
                             {
                                 richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Sem Operação.\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = NOP.\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Sem Operação.\n\n";
                                 processamento++;
                                 textBox2.Text = processamento.ToString();
                             }
                             else if (result == "HLT")
                             {
-                                richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Interrompe Processamento.\n";
+                                richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Interrompe Processamento.";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = HLT.\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Processo Interrompido.";
                                 processamento++;
                                 textBox2.Text = processamento.ToString();
                                 break;
@@ -209,7 +218,20 @@ namespace Simulador
                             {
                                 int posicao = carregando_endposicao(current);
                                 richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Carregou o valor do endereço de memória na posição " + posicao + " no Acumulador.\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = LDA " + posicao + ".\n";
+                                multiplexador = 1;
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> Multiplexador = " + multiplexador + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Acessa a memória RAM na posição " + posicao + ".\n";
                                 int valor = carregando_valordoend(posicao);
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> ULA\n" +
+                                    "                                              Operandos:\n" +
+                                    "                                                     A - VAZIO\n                                                     B - " + valor + "\n" +
+                                    "                                              Entrada da Unidade de Controle:\n" +
+                                    "                                                     :=\n";
+
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Carrega a saída da ULA no Acumulador (Valor: " + valor + ").\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Incrementa o valor do PC para a próxima instrução.\n\n";
+
                                 textBox1.Text = valor.ToString();
                                 processamento += 2;
                                 textBox2.Text = processamento.ToString();
@@ -218,8 +240,22 @@ namespace Simulador
                             {
                                 int posicao = carregando_endposicao(current);
                                 richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Adicionou o valor do endereço de memória na posição " + posicao + " no Acumulador.\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = ADD " + posicao + ".\n";
+                                multiplexador = 1;
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> Multiplexador = " + multiplexador + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Acessa a memória RAM na posição " + posicao + ".\n";
                                 int valor = carregando_valordoend(posicao);
                                 int valor_ac = int.Parse(textBox1.Text);
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> ULA\n" +
+                                    "                                              Operandos:\n" +
+                                    "                                                     A - " + valor_ac + "\n                                                     B - " + valor + "\n" +
+                                    "                                              Entrada da Unidade de Controle:\n" +
+                                    "                                                     +\n";
+
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Carrega a saída da ULA no Acumulador (Valor: " + valor + ").\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Incrementa o valor do PC para a próxima instrução.\n\n";
+
+
                                 valor = valor + valor_ac;
                                 textBox1.Text = estouro(valor).ToString();
                                 processamento += 2;
@@ -239,6 +275,12 @@ namespace Simulador
                             {
                                 int posicao = carregando_endposicao(current);
                                 richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Carregou o valor do Acumulador no endereço de memória na posição " + posicao + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = STA " + posicao + ".\n";
+                                multiplexador = 0;
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> Multiplexador = " + multiplexador + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Acessa a memória RAM na posição " + posicao + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Carrega o valor do Acumulador no endereço de memória na posição acessada anteriormente (Posição: " + posicao + ").\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Incrementa o valor do PC para a próxima instrução.\n\n";
                                 int valor_ac = int.Parse(textBox1.Text);
                                 alterando_dados(posicao, valor_ac);
                                 processamento += 2;
@@ -247,41 +289,63 @@ namespace Simulador
                             else if (result == "JN")
                             {
                                 int valor_ac = int.Parse(textBox1.Text);
+                                posicao_desvio = carregando_endposicao(current);
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = JN " + posicao_desvio + ".\n";
                                 if (valor_ac > 127)
                                 {
-                                    posicao_desvio = carregando_endposicao(current);
                                     richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Houve desvio condicional - jump on negative para a posição " + posicao_desvio + ", pois o valor do acumulador é negativo.\n";
                                     desvio = 1;
+                                    processamento = posicao_desvio;
                                 }
                                 else
                                 {
+                                    processamento += 2;
                                     richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Não houve desvio condicional - jump on negative, pois o valor do acumulador não é negativo.\n";
                                 }
-                                processamento += 2;
                                 textBox2.Text = processamento.ToString();
                             }
                             else if (result == "JZ")
                             {
                                 int valor_ac = int.Parse(textBox1.Text);
+                                posicao_desvio = carregando_endposicao(current);
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = JN " + posicao_desvio + ".\n";
+                                multiplexador = 0;
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> Multiplexador = " + multiplexador + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Acessa a memória RAM na posição " + posicao_desvio + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> ULA\n" +
+                                    "                                              Operandos:\n" +
+                                    "                                                     A - " + valor_ac + "\n                                                     B - 0\n" +
+                                    "                                              Entrada da Unidade de Controle:\n" +
+                                    "                                                     =\n";
+
                                 if (valor_ac == 0)
                                 {
-                                    posicao_desvio = carregando_endposicao(current);
                                     richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Houve desvio condicional - jump on zero para a posição " + posicao_desvio + ", pois o valor do acumulador é zero.\n";
+                                    richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Desvio Condicional (Posição: " + posicao_desvio + ").\n";
+                                    richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Incrementa o valor do PC para a próxima instrução.\n\n";
                                     desvio = 1;
+                                    processamento = posicao_desvio;
                                 }
                                 else
                                 {
+                                    processamento += 2;
                                     richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Não houve desvio condicional - jump on zero, pois o valor do acumulador não é zero.\n";
+                                    richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Sem Desvio Condicional.\n";
+                                    richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Incrementa o valor do PC para a próxima instrução.\n\n";
                                 }
-                                processamento += 2;
                                 textBox2.Text = processamento.ToString();
                             }
                             else if (result == "JMP")
                             {
                                 posicao_desvio = carregando_endposicao(current);
                                 richTextBox1.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Houve desvio incondicional - jump para a posição " + posicao_desvio + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Registrador de Instrução = JMP " + posicao_desvio + ".\n";
+                                multiplexador = 1;
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> Decodificador -> Multiplexador = " + multiplexador + ".\n";
+                                richTextBox2.Text += "<" + DateTime.Today.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "> O valor do PC foi alterado para a posição do desvio (Posição: " + posicao_desvio + ").\n\n";
+
                                 desvio = 1;
-                                processamento += 2;
+                                processamento = posicao_desvio;
                                 textBox2.Text = processamento.ToString();
                             }
 
@@ -293,9 +357,7 @@ namespace Simulador
                                 desvio = 0;
                             }
                         }
-
                     }
-
                 }
             }
             else

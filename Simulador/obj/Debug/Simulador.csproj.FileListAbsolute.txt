@@ -7,3 +7,12 @@ c:\users\gessé felipe\documents\visual studio 2017\Projects\Simulador\Simulador
 c:\users\gessé felipe\documents\visual studio 2017\Projects\Simulador\Simulador\obj\Debug\Simulador.csproj.GenerateResource.Cache
 c:\users\gessé felipe\documents\visual studio 2017\Projects\Simulador\Simulador\obj\Debug\Simulador.exe
 c:\users\gessé felipe\documents\visual studio 2017\Projects\Simulador\Simulador\obj\Debug\Simulador.pdb
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\bin\Debug\Simulador.exe.config
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\bin\Debug\Simulador.exe
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\bin\Debug\Simulador.pdb
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.csprojResolveAssemblyReference.cache
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.frmSimulador.resources
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.Properties.Resources.resources
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.csproj.GenerateResource.Cache
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.exe
+C:\Users\Gessé Felipe\Desktop\Simulador\Simulador\obj\Debug\Simulador.pdb

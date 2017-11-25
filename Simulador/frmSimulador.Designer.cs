@@ -55,6 +55,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.menu.SuspendLayout();
             this.gpbExecutar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,7 +73,7 @@
             this.menuDownload});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(812, 24);
+            this.menu.Size = new System.Drawing.Size(411, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
             // 
@@ -90,38 +93,38 @@
             // menuArquivoNovo
             // 
             this.menuArquivoNovo.Name = "menuArquivoNovo";
-            this.menuArquivoNovo.Size = new System.Drawing.Size(152, 22);
+            this.menuArquivoNovo.Size = new System.Drawing.Size(119, 22);
             this.menuArquivoNovo.Text = "Novo";
             this.menuArquivoNovo.Click += new System.EventHandler(this.menuArquivoNovo_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(116, 6);
             // 
             // menuArquivoCarregar
             // 
             this.menuArquivoCarregar.Name = "menuArquivoCarregar";
-            this.menuArquivoCarregar.Size = new System.Drawing.Size(152, 22);
+            this.menuArquivoCarregar.Size = new System.Drawing.Size(119, 22);
             this.menuArquivoCarregar.Text = "Carregar";
             this.menuArquivoCarregar.Click += new System.EventHandler(this.menuArquivoCarregar_Click);
             // 
             // menuArquivoSalvar
             // 
             this.menuArquivoSalvar.Name = "menuArquivoSalvar";
-            this.menuArquivoSalvar.Size = new System.Drawing.Size(152, 22);
+            this.menuArquivoSalvar.Size = new System.Drawing.Size(119, 22);
             this.menuArquivoSalvar.Text = "Salvar";
             this.menuArquivoSalvar.Click += new System.EventHandler(this.menuArquivoSalvar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
             // 
             // menuArquivoSair
             // 
             this.menuArquivoSair.Name = "menuArquivoSair";
-            this.menuArquivoSair.Size = new System.Drawing.Size(152, 22);
+            this.menuArquivoSair.Size = new System.Drawing.Size(119, 22);
             this.menuArquivoSair.Text = "Sair";
             this.menuArquivoSair.Click += new System.EventHandler(this.menuArquivoSair_Click);
             // 
@@ -223,29 +226,32 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.richTextBox2);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(429, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 267);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(371, 245);
+            this.groupBox1.Size = new System.Drawing.Size(387, 398);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Resultado";
+            this.groupBox1.Text = "Registro";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox1.Location = new System.Drawing.Point(6, 42);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(359, 147);
+            this.richTextBox1.Size = new System.Drawing.Size(375, 96);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Location = new System.Drawing.Point(234, 172);
+            this.groupBox3.Location = new System.Drawing.Point(235, 325);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(71, 67);
             this.groupBox3.TabIndex = 3;
@@ -266,7 +272,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(66, 172);
+            this.groupBox2.Location = new System.Drawing.Point(66, 325);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(71, 67);
             this.groupBox2.TabIndex = 1;
@@ -289,11 +295,38 @@
             this.saveFileDialog1.Filter = "Arquivos .txt|*.txt";
             this.saveFileDialog1.Title = "Salvar Arquivo como...";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Alto Nível:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Baixo Nível:";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(6, 167);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(375, 152);
+            this.richTextBox2.TabIndex = 9;
+            this.richTextBox2.Text = "";
+            // 
             // frmSimulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 273);
+            this.ClientSize = new System.Drawing.Size(411, 677);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rtbCodigodaLinha);
@@ -313,6 +346,7 @@
             this.gpbExecutar.ResumeLayout(false);
             this.gpbExecutar.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -350,6 +384,9 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem menuDownload;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 
