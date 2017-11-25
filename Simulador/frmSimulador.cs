@@ -120,7 +120,7 @@ namespace Simulador
                             {
                                 rtbCodigodaLinha.Text = "ERRO 472: ERRO COM O ARQUIVO";
                                 rtbReadFile.Text = "ERRO 472: ERRO COM O ARQUIVO";
-                                break;
+                                return ;
                             }
 
                         }
