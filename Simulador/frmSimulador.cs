@@ -136,6 +136,11 @@ namespace Simulador
         }
         private void menuArquivoNovo_Click(object sender, EventArgs e)
         {
+            if (this.Size.Height > 400)
+            {
+                this.Size = new Size(this.Size.Width, 316);
+                this.Location = new Point(this.Location.X, this.Location.Y + 206);
+            }
             rtbReadFile.Text = "";
             rtbCodigodaLinha.Text = "";
             btnExecutar.Enabled = true;
@@ -159,9 +164,12 @@ namespace Simulador
         }
         private void btnExecutar_Click(object sender, EventArgs e)
         {
-
             if (rtbReadFile.Text != "")
             {
+                if (this.Size.Height < 400) { 
+                    this.Size = new Size(this.Size.Width, this.Size.Height + 412);
+                    this.Location = new Point(this.Location.X, this.Location.Y - 206);
+                }
                 richTextBox1.Text = "";
                 richTextBox2.Text = "";
                 textBox1.Text = "0";
